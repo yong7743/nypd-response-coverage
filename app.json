@@ -1,0 +1,118 @@
+{
+  "version": "0.3",
+  "kind": "app",
+  "generatedAt": "2026-10-27T08:21:03.260Z",
+  "item": {
+    "title": "NYPD Response Coverage",
+    "subtitle": "Select a police station to generate a 10-minute driving-time area"
+  },
+  "map": {
+    "type": "webmap",
+    "path": "./map.json"
+  },
+  "app": {
+    "template": "nova-app",
+    "preset": "analysis",
+    "showHeader": true,
+    "theme": {
+      "mode": "light",
+      "accent": "default"
+    },
+    "layout": {
+      "right": {
+        "hidden": false,
+        "width": "360px",
+        "title": "Police station search",
+        "collapsed": false,
+        "blocks": [
+          {
+            "type": "customMount",
+            "id": "station-workflow",
+            "title": "Find a station"
+          }
+        ]
+      }
+    },
+    "widgets": [
+      {
+        "id": "home",
+        "type": "home",
+        "slot": "top-left",
+        "config": {}
+      },
+      {
+        "id": "legend",
+        "type": "legend",
+        "slot": "bottom-left",
+        "config": {}
+      },
+      {
+        "id": "default-layer-list",
+        "type": "layerList",
+        "slot": "top-right",
+        "config": {}
+      },
+      {
+        "id": "default-basemap-gallery",
+        "type": "basemapGallery",
+        "slot": "top-right",
+        "config": {}
+      }
+    ],
+    "interactions": [],
+    "behaviors": [
+      {
+        "id": "station-service-area",
+        "label": "Station selection and 10-minute driving-time workflow",
+        "bundlePath": "./runtime/behaviors/station-service-area-04d26c34a3e86fdd.js",
+        "sourceSha256": "04d26c34a3e86fdde75781b2c65ad82feff644bbd9c36554607624a9c08a57d4",
+        "modulePaths": [
+          "esri/Graphic",
+          "esri/portal/Portal",
+          "esri/rest/networkService",
+          "esri/rest/serviceArea",
+          "esri/rest/support/FeatureSet",
+          "esri/rest/support/ServiceAreaParameters"
+        ],
+        "config": {
+          "stationLayerId": "1a17c738109-layer-2",
+          "minutes": 10
+        },
+        "mounts": [
+          "station-workflow"
+        ],
+        "ownedLayerIds": [
+          "selected-service-area"
+        ],
+        "interactions": [
+          {
+            "id": "station-map-click",
+            "trigger": {
+              "type": "feature-click",
+              "layerId": "1a17c738109-layer-2"
+            },
+            "actionId": "select-station"
+          }
+        ],
+        "installedAt": "2026-10-27T08:22:24.525Z"
+      }
+    ]
+  },
+  "nova": {
+    "basename": "db6abf1f-5018-4720-8cd6-aba9135b1491",
+    "presentationMode": "app",
+    "ownedGraphicsLayerIds": [],
+    "origin": {
+      "portalUrl": "https://www.arcgis.com",
+      "mapId": "output-9e73252b-3021-4646-bea9-bd399c7faa04",
+      "mapName": "New Conversation",
+      "viewMode": "2d",
+      "capturedAt": "2026-10-27T08:21:03.259Z"
+    },
+    "sourceSelection": {
+      "mode": "all"
+    },
+    "unsupportedLayers": [],
+    "degradedFeatures": []
+  }
+}
